@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: what
+Build-Jdk: version 1.8.0_281
+Implementation-Version: 2.0.1
+Implementation-Vendor-Id: com.onepeice
+Main-Class: ${start-class}
+
