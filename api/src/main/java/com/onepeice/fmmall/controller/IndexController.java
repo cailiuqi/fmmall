@@ -31,8 +31,8 @@ public class IndexController {
     @GetMapping("/indeximg")
     @ApiOperation("轮播图初始化接口")
     public ResultVo listIndex(){
-        ResultVo ResultVo = indexImgService.listIndex();
-        return ResultVo;
+        ResultVo resultVo = indexImgService.listIndex();
+        return resultVo;
     }
 
     @GetMapping("/category-list")
