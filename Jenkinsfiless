@@ -1,0 +1,19 @@
+#!/usr/bin/env groovy
+pipeline {
+    agent any
+
+    environment {
+        giturl = 'git@github.com:cailiuqi/fmmall.git'
+    }
+
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+        disableConcurrentBuilds()
+        bulidDiscarder(logRotator(daysTokeepStr: '10',numTokeepStr: '10'))
+    }
+
+    paratmeters {
+        gitParamerter branch
+    }
+}
