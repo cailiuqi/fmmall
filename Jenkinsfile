@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Deploy') {
-//      steps {
+     steps {
 //        withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'keyfile', passphraseVariable: '123456')]) {
 //          echo 'Connect server'
 ////          sh """
@@ -14,9 +14,10 @@ pipeline {
 //          sh 'touch textfile.txt'
 //          sh 'echo "this is testing" >> textfile.txt'
 //        }
-//      }
-      echo 'Connect server'
-      sshPublisher(publishers: [sshPublisherDesc(configName: '12', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'touch test12.txt', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])    }
+       echo 'Connect server'
+       sshPublisher(publishers: [sshPublisherDesc(configName: '12', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'touch test12.txt', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])    }
+
+    }
 
   }
 }
