@@ -30,6 +30,7 @@ public class IndexController {
 
     @GetMapping("/indeximg")
     @ApiOperation("轮播图初始化接口")
+    //这是一个测试
     public ResultVo listIndex(){
         ResultVo resultVo = indexImgService.listIndex();
         return resultVo;
