@@ -8,7 +8,7 @@ pipeline {
 //          sh """
 //              ssh -o $MAC-SSH_KEY what@192.168.43.205
 //             """
-          sh "ssh -i ${keyfile} -o StrictHostKeyChecking=no what@192.168.43.205"
+          sh "ssh -i 'keyfile:$keyfile' -o StrictHostKeyChecking=no what@192.168.43.205"
 
           sh 'cd /Users/what'
           sh 'touch textfile.txt'
