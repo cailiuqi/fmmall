@@ -15,7 +15,28 @@ pipeline {
 //          sh 'echo "this is testing" >> textfile.txt'
 //        }
        echo 'Connect server'
-       sshPublisher(publishers: [sshPublisherDesc(configName: '12', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'touch test12.txt', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])    }
+       withCredentials([sshUserPrivateKey(credentialsId: 'ssh-keyid', keyFileVariable: 'ssh-keyus')]) {
+         // some block
+         sshPublisher(publishers:
+                 [sshPublisherDesc(
+                         configName: '12',
+                         sshCredentials: [ key: $[ssh-keyus], username: 'ssh-keyus'],
+                         transfers:
+                                 [sshTransfer
+                                          (cleanRemote: false,
+                                                  excludes: '',
+                                                  execCommand: 'touch test12.txt',
+                                                  execTimeout: 120000,
+                                                  flatten: false,
+                                                  makeEmptyDirs: false,
+                                                  noDefaultExcludes: false,
+                                                  patternSeparator: '[, ]+',
+                                                  remoteDirectory: '',
+                                                  remoteDirectorySDF: false,
+                                                  removePrefix: '', sourceFiles: '')],
+                         usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+       }
+           }
 
     }
 
