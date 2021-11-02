@@ -20,7 +20,7 @@ pipeline {
          sshPublisher(publishers:
                  [sshPublisherDesc(
                          configName: '12',
-                         sshCredentials: [ key: ${ssh-keyus}, username: 'ssh-keyus'],
+                         sshCredentials: [ key: '$ssh-keyus', username: 'ssh-keyus'],
                          transfers:
                                  [sshTransfer
                                           (cleanRemote: false,
