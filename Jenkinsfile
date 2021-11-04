@@ -9,7 +9,7 @@ pipeline {
          remote.name = 'test'
          remote.host = '192.168.3.40'
          remote.user = 'what'
-         remote.identityFile = '${ssh-keyus}'
+         remote.identityFile = ssh-keyus
          remote.allowAnyHosts = true
            writeFile file: 'abc.sh', text: 'ls -lrt'
            sshCommand remote: remote, command: "ls -lrt"
