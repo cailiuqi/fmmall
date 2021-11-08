@@ -8,7 +8,7 @@ pipeline {
          script{
            def remote = [:]
            remote.name = 'test'
-           remote.host = '192.168.3.40'
+           remote.host = '192.168.43.205'
            remote.user = 'what'
            remote.identityFile = ssh-keyus
            remote.allowAnyHosts = true
