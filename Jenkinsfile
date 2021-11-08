@@ -5,7 +5,6 @@ pipeline {
      steps {
 
        withCredentials([sshUserPrivateKey(credentialsId: 'ssh-keyid', keyFileVariable: 'ssh-keyus')]) {
-         script{
            def remote = [:]
            remote.name = 'test'
            remote.host = '192.168.43.205'
@@ -16,7 +15,6 @@ pipeline {
            writeFile file: 'abc.sh', text: 'ls -lrt'
            sshCommand remote: remote, command: "ls -lrt"
            sshPut remote: remote, from: 'abc.sh', into: '.'
-         }
        }
            }
 
