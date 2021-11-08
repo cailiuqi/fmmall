@@ -12,11 +12,12 @@ pipeline {
            remote.user = 'what'
            remote.identityFile = ssh-keyus
            remote.allowAnyHosts = true
-         }
+
            writeFile file: 'abc.sh', text: 'ls -lrt'
            sshCommand remote: remote, command: "ls -lrt"
            sshPut remote: remote, from: 'abc.sh', into: '.'
          }
+       }
            }
 
     }
