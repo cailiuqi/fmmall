@@ -1,24 +1,30 @@
 pipeline {
-  agent any
-  stages {
-    stage('Deploy') {
-     steps {
+    agent any
 
-       withCredentials([sshUserPrivateKey(credentialsId: 'ssh-keyid', keyFileVariable: 'ssh-keyus')]) {
-           def remote = [:]
-           remote.name = 'test'
-           remote.host = '192.168.43.205'
-           remote.user = 'what'
-           remote.identityFile = ssh-keyus
-           remote.allowAnyHosts = true
-
-           writeFile file: 'abc.sh', text: 'ls -lrt'
-           sshCommand remote: remote, command: "ls -lrt"
-           sshPut remote: remote, from: 'abc.sh', into: '.'
-       }
-           }
-
+    options {
+        timestamps()
+        skipDefaultCheckout(true)
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
     }
 
-  }
+    environment {
+        hostname = '192.168.43.205';
+    }
+    stages {
+        stage('Deploy') {
+            steps {
+
+                script {
+
+                    withCredentials([sshUserPrivateKey(credentialsId: 'mackey', keyFileVariable: 'KEYFILE')]) {
+                        def remote = [name:"what",host:"192.168.43.205",allowAnyHosts: true,user:"what",identityFile:"$KEYFILE"]
+                        sshCommand remote: remote, command: 'pwd;ls -ltr'
+                    }
+                }
+            }
+
+        }
+
+    }
 }

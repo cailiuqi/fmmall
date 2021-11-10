@@ -1,5 +1,6 @@
 package com.onepeice.fmmall.controller;
 
+import com.onepeice.fmmall.entity.ShoppingCart;
 import com.onepeice.fmmall.service.ShopCarService;
 import com.onepeice.fmmall.vo.ResultVo;
 import io.swagger.annotations.*;
@@ -20,7 +21,13 @@ public class ShopCarController {
     @ApiImplicitParam(dataType = "String",name = "token",value = "token",required = true)
     @GetMapping("/list")
     public ResultVo getShopcar(@RequestHeader("token") String token,String userId){
-        ResultVo resultVo = shopCarService.getShopcar(token);
-        return resultVo;
+        ResultVo ResultVo = shopCarService.getShopcar(token);
+        return ResultVo;
+    }
+
+    @PostMapping("/add")
+    public ResultVo addShoppingCart(@RequestBody ShoppingCart cart, @RequestHeader("token")String token){
+        ResultVo ResultVo = shopCarService.addShoppingCart(cart);
+        return ResultVo;
     }
 }

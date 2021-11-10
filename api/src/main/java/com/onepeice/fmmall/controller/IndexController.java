@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping("/index")
+
 @CrossOrigin
 @Api(value = "轮播图相关接口",tags = "轮播图管理")
 public class IndexController {
