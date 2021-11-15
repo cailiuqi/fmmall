@@ -1,3 +1,5 @@
+import com.sun.tools.internal.xjc.model.CDefaultValue
+
 pipeline {
     agent any
 
@@ -8,6 +10,13 @@ pipeline {
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
     }
 
+    parameters {
+        gitParameter branch : '', name: 'branch' , branchFilter: 'origin/(.*)', defaultValue: 'master' ,
+        listSize: '5' ,
+        selectedValue: 'DEFAULT' , sortMode: 'ASCENDING_SMART' , description: 'branch to build' ,
+        type: 'PT_BRANCH'
+        string(name: 'releaseVersion',defaultValue: '1.0.0',description: 'version to release')
+    }
     environment {
         hostname = '192.168.43.205';
     }
