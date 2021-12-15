@@ -15,7 +15,7 @@ pipeline {
     }
 
     parameters {
-        gitParameter branch : '', name: 'branch' , branchFilter: 'origin/(.*)', defaultValue: 'master' ,
+        gitParameter branch : '', name: 'branch' , branchFilter: 'origin/(.*)', defaultValue: 'main' ,
         listSize: '5' ,
         selectedValue: 'DEFAULT' , sortMode: 'ASCENDING_SMART' , description: 'branch to build' ,
         type: 'PT_BRANCH'
