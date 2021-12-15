@@ -29,7 +29,7 @@ pipeline {
                 deleteDir()
                 git url: "${gitUrl}",
                     branch: "${params.branch}",
-                    credentialsId: '1212'
+                    credentialsId: 'fc7d9f00-2e91-4177-afb9-82cfba3507a1'
             }
         }
         stage('Building Project'){
