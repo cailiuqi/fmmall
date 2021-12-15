@@ -35,7 +35,10 @@ pipeline {
         stage('Building Project'){
             steps{
                 echo 'Building...'
-                sh ' mvn -U clean install -Dmaven.test.skip=true '
+                sh """
+                    mvn version: set -DgenerateBackUpPoms=false -DnewVersion=${params.releaseVersion}
+                    mvn -U clean install -Dmaven.test.skip=true
+                   """
 
             }
         }
@@ -46,9 +49,9 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: 'mackey', keyFileVariable: 'KEYFILE')]) {
                         def remote = [name:"what",host:"192.168.43.205",allowAnyHosts: true,user:"what",identityFile:"$KEYFILE"]
                         sshCommand remote: remote, command: 'pwd;ls -ltr'
-                        writeFile file: 'abc.sh', text: 'ls -lrt'
-                        sshPut remote: remote, from: 'abc.sh', into: '.'
-                        sshCommand remote: remote, command: 'cat abc.sh'
+                        //writeFile file: 'abc.sh', text: 'ls -lrt'
+                        sshPut remote: remote, from: 'service/target/service-2.0.1.jar', into: '.'
+                        //sshCommand remote: remote, command: 'cat abc.sh'
                     }
                 }
             }
