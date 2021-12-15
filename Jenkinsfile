@@ -36,7 +36,6 @@ pipeline {
             steps{
                 echo 'Building...'
                 sh """
-                    mvn version: set -DgenerateBackUpPoms=false -DnewVersion=${params.releaseVersion}
                     mvn -U clean install -Dmaven.test.skip[true
                    """
 
