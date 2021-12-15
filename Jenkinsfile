@@ -27,8 +27,8 @@ pipeline {
             steps{
                 echo 'Checking out ...'
                 deleteDir()
-                git url: "${gitUrl}"
-                    branch: "${params.branch}"
+                git url: "${gitUrl}",
+                    branch: "${params.branch}",
                     credentialsId: '1212'
             }
         }
