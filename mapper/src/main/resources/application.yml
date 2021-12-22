@@ -9,3 +9,6 @@ spring:
     url: jdbc:mysql://localhost:3306/fmmall?characterEncoding=utf-8&useSSL=false
     username: root
     type: com.alibaba.druid.pool.DruidDataSource
+
+
+

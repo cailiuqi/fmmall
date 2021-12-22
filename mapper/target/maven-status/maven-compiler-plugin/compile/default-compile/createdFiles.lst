@@ -1,0 +1,14 @@
+com/onepeice/fmmall/general/GeneralDAO.class
+com/onepeice/fmmall/dao/ProductMapper.class
+com/onepeice/fmmall/dao/ProductSkuMapper.class
+com/onepeice/fmmall/dao/CategoryMapper.class
+com/onepeice/fmmall/dao/OrderItemMapper.class
+com/onepeice/fmmall/dao/ProductParamsMapper.class
+com/onepeice/fmmall/dao/IndexImgMapper.class
+com/onepeice/fmmall/dao/ShoppingCartMapper.class
+com/onepeice/fmmall/dao/UserLoginHistoryMapper.class
+com/onepeice/fmmall/dao/UserAddrMapper.class
+com/onepeice/fmmall/dao/ProductCommentsMapper.class
+com/onepeice/fmmall/dao/UsersMapper.class
+com/onepeice/fmmall/dao/ProductImgMapper.class
+com/onepeice/fmmall/dao/OrdersMapper.class

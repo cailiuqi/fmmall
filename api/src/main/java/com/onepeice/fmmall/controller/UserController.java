@@ -1,6 +1,7 @@
 package com.onepeice.fmmall.controller;
 
 import com.onepeice.fmmall.entity.Users;
+import com.onepeice.fmmall.service.UserAddrService;
 import com.onepeice.fmmall.service.UserService;
 import com.onepeice.fmmall.vo.ResultVo;
 import io.swagger.annotations.Api;
@@ -21,6 +22,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserAddrService userAddrService;
 
     @ApiOperation("用户登陆接口")
     @RequestMapping(value = "/login",method = RequestMethod.GET)
@@ -32,8 +35,8 @@ public class UserController {
     )
     public ResultVo login(@RequestParam("username") String name , @RequestParam("password") String pwd){
 
-        ResultVo resultVo = userService.checkLogin(name, pwd);
-        return resultVo;
+        ResultVo ResultVo = userService.checkLogin(name, pwd);
+        return ResultVo;
 
 
     }
@@ -52,20 +55,15 @@ public class UserController {
         Users user = new Users();
         user.setUsername(name);
         user.setPassword(pwd);
-        ResultVo resultVo = userService.regist(user);
-        return resultVo;
+        ResultVo ResultVo = userService.regist(user);
+        return ResultVo;
     }
 
-
-    @PostMapping("/set")
-    public ResultVo set(@RequestParam String iphone){
-        System.out.println(iphone);
-        ResultVo resultVo = new ResultVo();
-        List<String> strings = new ArrayList<>();
-        strings.add("test1");
-        strings.add("test2");
-        resultVo.setData(strings);
-        return resultVo;
+    @GetMapping("/list")
+    @ApiImplicitParam(dataType = "int",name = "userId", value = "用户ID",required = true)
+    public ResultVo listAddr(Integer userId, @RequestHeader("token") String token){
+        ResultVo ResultVo = userAddrService.listAddrsByUid(userId);
+        return ResultVo;
     }
 }
 

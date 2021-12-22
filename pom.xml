@@ -44,6 +44,30 @@
         </dependency>
 
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution> <!--执行器 mvn assembly:assembly-->
+                        <id>make-tar.gz</id> <!--名字任意 -->
+                        <phase>package</phase> <!-- 绑定到package生命周期阶段上 -->
+                        <goals>
+                            <goal>single</goal> <!-- 该打包任务只运行一次 -->
+                        </goals>
+                        <configuration>
+                            <!-- 去掉打成的包的assembly id后缀-->
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

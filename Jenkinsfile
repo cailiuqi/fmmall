@@ -20,6 +20,10 @@ pipeline {
         selectedValue: 'DEFAULT' , sortMode: 'ASCENDING_SMART' , description: 'branch to build' ,
         type: 'PT_BRANCH'
         string(name: 'releaseVersion',defaultValue: '1.0.0',description: 'version to release')
+        extendedChoice defaultValue: 'api', description: 'all project lists',
+                multiSelectDelimiter: ',', name: 'projectNameChoose', quoteValue: true,
+                saveJSONParameterToFile: false, type: 'PT_CHECKBOX',
+                value: 'api,beans,common,mapper,service ', visibleItemCount: 10
     }
 
     stages {

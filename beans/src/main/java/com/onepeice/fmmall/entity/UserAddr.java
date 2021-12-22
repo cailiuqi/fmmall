@@ -1,5 +1,7 @@
 package com.onepeice.fmmall.entity;
 
+import lombok.AllArgsConstructor;
+
 import java.util.Date;
 import javax.persistence.*;
 

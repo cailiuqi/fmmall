@@ -29,7 +29,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         //将token放到请求投header中传递到后端，所以要通过getHeader方法纳token
         String token = request.getHeader("token");
         if (token == null) {
-            ResultVo resultVo = new ResultVo(ResStatus.NO, "请登录", null);
+            ResultVo resultVo = new ResultVo(ResStatus.LOGIN_FAIL_NOT, "请登录", null);
             doResponse(response,resultVo);
         }else {
            try{
@@ -39,7 +39,7 @@ public class TokenInterceptor implements HandlerInterceptor {
                Jws<Claims> claimsJws = parser.parseClaimsJws(token);
                return true;
            }catch (ExpiredJwtException e){
-               doResponse(response,new ResultVo(ResStatus.NO,"请重新登陆",null));
+               doResponse(response,new ResultVo(ResStatus.LOGIN_FAIL_OVERDUE,"请重新登陆",null));
            }catch (UnsupportedJwtException e){
                doResponse(response,new ResultVo(ResStatus.NO,"非法token，开启守护模式",null));
            }

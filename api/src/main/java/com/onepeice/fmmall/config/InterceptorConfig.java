@@ -15,8 +15,12 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(tokenInterceptor)//添加自定义的拦截器
-        .addPathPatterns("/shopcart/**");
+        .addPathPatterns("/shopcart/**")
+        .addPathPatterns("/useraddr/**")
+        .addPathPatterns("/user/**")
+        .addPathPatterns("/orders/**")
+        .excludePathPatterns("/user/login");
                 //.addPathPatterns("/**")//添加拦截的controller
-                //.excludePathPatterns("/user/**");//排除不需要拦截的资源
+                ////排除不需要拦截的资源
     }
 }
